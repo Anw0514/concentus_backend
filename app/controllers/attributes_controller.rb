@@ -1,0 +1,2 @@
+class AttributesController < ApplicationController
+end
