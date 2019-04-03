@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2019_04_03_123623) do
 
   create_table "tidbits", force: :cascade do |t|
     t.string "value"
-    t.string "type"
+    t.string "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

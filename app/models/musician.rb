@@ -6,4 +6,28 @@ class Musician < ApplicationRecord
   has_many :tidbits, through: :page_tidbits
   has_many :bookings, as: :act
   has_many :days, through: :bookings
+
+  def genres
+    self.tidbits.select do |tidbit|
+      tidbit.group == 'genre'
+    end
+  end
+  
+  def links
+    self.tidbits.select do |tidbit|
+      tidbit.group == 'link'
+    end
+  end
+  
+  def looking_for
+    self.tidbits.select do |tidbit|
+      tidbit.group == 'looking for'
+    end
+  end
+
+  def skills
+    self.tidbits.select do |tidbit|
+      tidbit.group == 'skill'
+    end
+  end
 end
