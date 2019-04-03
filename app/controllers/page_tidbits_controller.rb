@@ -1,0 +1,2 @@
+class PageTidbitsController < ApplicationController
+end

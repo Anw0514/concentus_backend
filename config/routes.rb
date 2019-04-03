@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :messages
   resources :bookings
   resources :days
-  resources :attribute_pages
-  resources :attributes
+  resources :page_tidbits
+  resources :tidbits
   resources :band_members
   resources :bands
   resources :venues

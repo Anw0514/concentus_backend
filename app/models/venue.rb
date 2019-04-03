@@ -1,4 +1,4 @@
 class Venue < ApplicationRecord
   belongs_to :user
-  has_many :attribute_pages, as: :page
+  has_many :page_tidbits, as: :page
 end

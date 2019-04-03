@@ -1,0 +1,2 @@
+class TidbitsController < ApplicationController
+end
