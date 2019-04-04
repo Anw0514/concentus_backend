@@ -46,6 +46,7 @@ class Musician < ApplicationRecord
   def member_serializer
     {
       id: self.id,
+      user_id: self.user_id,
       name: self.name,
       zip: self.zip,
       bio: self.bio
