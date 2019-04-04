@@ -7,16 +7,34 @@ class User < ApplicationRecord
   has_many :senders, through: :messages, source: :sender
   has_secure_password
 
-  def my_pages_serializer
-    {musicians: self.musicians.map { |musician| musician.my_page_serializer},
-     bands: self.bands.map { |band| band.my_page_serializer},
-     venues: self.venues.map { |venue| venue.my_page_serializer}}
+  def find_opposite(pages, class_name)
+    # method to find the instances of the input class that DON'T belong to self
+    class_name.all.select do |page|
+        !pages.include?(page)
+    end.map { |page| page.page_serializer}
+  end
 
-    # do I want the whole page objects or just the information I need from each one???
-    # does the ID need to be taken to the front end???
+  def my_pages_serializer
+    # serializer for the pages belonging to a user
+    {musicians: self.musicians.map { |musician| musician.page_serializer},
+     bands: self.bands.map { |band| band.page_serializer},
+     venues: self.venues.map { |venue| venue.page_serializer}}
+  end
+
+  def discover_pages_serializer
+    # serializer for the pages NOT belonging to a user
+    {musicians: self.find_opposite(self.musicians, Musician),
+     bands: self.find_opposite(self.bands, Band),
+     venues: self.find_opposite(self.venues, Venue)}
+  end
+
+  def info_serializer
+    {my_pages: self.my_pages_serializer,
+     discover_pages: self.discover_pages_serializer}
   end
 
   def login_serializer
+    # serializer for the response of a user's login
     {id: self.id,
      name: self.name,
      email: self.email,
@@ -27,4 +45,4 @@ class User < ApplicationRecord
   end
 end
 
-# !!! for musicians, bands, and venues: look into subclasses so that the extract_values method isn't repeated
+# !!! for musicians, bands, and venues: look into subclasses / modules so that the extract_values method isn't repeated

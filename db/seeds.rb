@@ -42,7 +42,7 @@ venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'R
 # musicians
 mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, bio: "This is a bio")
 
-ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, bio: "Why is that so fire???")
+ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, bio: "Why is that so fire??")
 
 # bands and members
 band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio")

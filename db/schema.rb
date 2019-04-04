@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2019_04_03_123623) do
   create_table "messages", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "recipient_id"
+    t.boolean "sender_deleted", default: false
+    t.boolean "recipient_deleted", default: false
     t.string "content"
     t.string "subject"
     t.datetime "created_at", null: false

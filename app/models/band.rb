@@ -24,8 +24,9 @@ class Band < ApplicationRecord
     end
   end
 
-  def my_page_serializer
+  def page_serializer
     {id: self.id,
+     user_id: self.user.id,
      name: self.name,
      zip: self.zip,
      bio: self.bio,

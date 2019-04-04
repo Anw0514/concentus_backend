@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :bookings
-  resources :days
-  resources :page_tidbits
-  resources :tidbits
-  resources :band_members
-  resources :bands
-  resources :venues
-  resources :musicians
-  resources :users
+  resources :messages, only: [:create, :index, :update]
+  resources :bookings, only: [:create, :delete]
+  resources :tidbits, only: [:create, :index]
+  # resources :bands
+  # resources :venues
+  # resources :musicians
+  resources :users, only: [:create, :update, :destroy]
 
   # custom route for '/mypages'
-
-  # custom route for '/discoverpages'
+  get '/users/:id/info', to: "users#info"
 
   # custom route for '/login'
+  get '/login', to: "application#login"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
