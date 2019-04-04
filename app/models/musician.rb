@@ -30,4 +30,32 @@ class Musician < ApplicationRecord
       tidbit.group == 'skill'
     end
   end
+
+  def my_page_serializer
+    {id: self.id,
+     name: self.name,
+     zip: self.zip,
+     bio: self.bio,
+     genres: self.extract_value(self.genres),
+     looking_for: self.extract_value(self.looking_for),
+     links: self.extract_value(self.links),
+     skills: self.extract_value(self.skills),
+     bookings: self.bookings}
+  end
+
+  def member_serializer
+    {
+      id: self.id,
+      name: self.name,
+      zip: self.zip,
+      bio: self.bio
+    }
+  end
+
+  def extract_value(tidbit_array)
+    tidbit_array.map do |tidbit|
+      tidbit.value
+    end
+  end
+
 end

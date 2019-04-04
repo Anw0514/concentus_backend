@@ -24,4 +24,22 @@ class Band < ApplicationRecord
     end
   end
 
+  def my_page_serializer
+    {id: self.id,
+     name: self.name,
+     zip: self.zip,
+     bio: self.bio,
+     genres: self.extract_value(self.genres),
+     looking_for: self.extract_value(self.looking_for),
+     links: self.extract_value(self.links),
+     bookings: self.bookings,
+     members: self.musicians.map { |musician| musician.member_serializer}}
+  end
+
+  def extract_value(tidbit_array)
+    tidbit_array.map do |tidbit|
+      tidbit.value
+    end
+  end
+
 end
