@@ -25,6 +25,7 @@ class Venue < ApplicationRecord
 
   def page_serializer
     {id: self.id,
+     model: "Venue",
      user_id: self.user.id,
      name: self.name,
      address: self.address,

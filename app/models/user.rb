@@ -14,18 +14,27 @@ class User < ApplicationRecord
     end.map { |page| page.page_serializer}
   end
 
+  def combine_page_types(musicians, bands, venues)
+    # combines the serialized pages into one 'page' array
+    [musicians, bands, venues].flatten(1)
+  end
+
   def my_pages_serializer
     # serializer for the pages belonging to a user
-    {musicians: self.musicians.map { |musician| musician.page_serializer},
-     bands: self.bands.map { |band| band.page_serializer},
-     venues: self.venues.map { |venue| venue.page_serializer}}
+    musicians = self.musicians.map { |musician| musician.page_serializer}
+    bands = self.bands.map { |band| band.page_serializer}
+    venues = self.venues.map { |venue| venue.page_serializer}
+
+    self.combine_page_types(musicians, bands, venues)
   end
 
   def discover_pages_serializer
     # serializer for the pages NOT belonging to a user
-    {musicians: self.find_opposite(self.musicians, Musician),
-     bands: self.find_opposite(self.bands, Band),
-     venues: self.find_opposite(self.venues, Venue)}
+    musicians = self.find_opposite(self.musicians, Musician)
+    bands = self.find_opposite(self.bands, Band)
+    venues = self.find_opposite(self.venues, Venue)
+
+    self.combine_page_types(musicians, bands, venues)
   end
 
   def info_serializer

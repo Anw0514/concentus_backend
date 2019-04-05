@@ -26,6 +26,7 @@ class Band < ApplicationRecord
 
   def page_serializer
     {id: self.id,
+     model: "Band",
      user_id: self.user.id,
      name: self.name,
      zip: self.zip,

@@ -33,6 +33,7 @@ class Musician < ApplicationRecord
 
   def page_serializer
     {id: self.id,
+     model: "Musician",
      user_id: self.user.id,
      name: self.name,
      zip: self.zip,
