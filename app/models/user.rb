@@ -38,6 +38,7 @@ class User < ApplicationRecord
   end
 
   def info_serializer
+    # what actually gets called on for the user's pages and discover pages
     {my_pages: self.my_pages_serializer,
      discover_pages: self.discover_pages_serializer}
   end

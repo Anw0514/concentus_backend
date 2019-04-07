@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  resources :messages, only: [:create, :index, :update]
+  resources :messages, only: [:create, :update]
   resources :bookings, only: [:create, :delete]
   resources :tidbits, only: [:create, :index]
-  # resources :bands
-  # resources :venues
-  # resources :musicians
   resources :users, only: [:create, :update, :destroy]
 
   # custom route for '/mypages'

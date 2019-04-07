@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     render json: @user.info_serializer
   end
 
+  def create
+    @user = user.create(user_params)
+    render json: @user
+  end
+
   private
 
   def user_params
