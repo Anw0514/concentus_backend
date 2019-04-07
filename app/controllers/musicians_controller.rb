@@ -4,20 +4,21 @@ class MusiciansController < ApplicationController
 
     def create
         @musician = Musician.create(musician_params)
-        render json: @musician
+        render json: @musician.page_serializer
     end
 
     def update
-        @musiscian.update(fish_params)
-        if @musiscian.save
-            render json: @musiscian, status: accepted
+        @musician.update(musician_params)
+        if @musician.save
+            render json: @musician, status: accepted
         else
-            render json: {errors: @musiscian.errors.full_messages}, status: unprocessible_entity
+            render json: {errors: @musician.errors.full_messages}, status: unprocessible_entity
         end
     end
 
     def destroy
-
+        @musician.destroy
+        render json: @musician.page_serializer
     end
 
     private

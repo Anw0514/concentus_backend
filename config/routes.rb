@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :bookings, only: [:create, :delete]
   resources :tidbits, only: [:create, :index]
   resources :users, only: [:create, :update, :destroy]
+  resources :musicians, only: [:create, :destroy, :update]
+  resources :bands, only: [:create, :destroy, :update]
+  resources :venues, only: [:create, :destroy, :update]
 
   # custom route for '/mypages'
   get '/users/:id/info', to: "users#info"

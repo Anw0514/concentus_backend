@@ -3,15 +3,22 @@ class VenuesController < ApplicationController
     before_action :find_venue, only: [:update, :destroy]
 
     def create
-
+        @venue = Venue.create(venue_params)
+        render json: @venue.page_serializer
     end
 
     def update
-
+        @venue.update(venue_params)
+        if @venue.save
+            render json: @venue, status: accepted
+        else
+            render json: {errors: @venue.errors.full_messages}, status: unprocessible_entity
+        end
     end
 
     def destroy
-
+        @venue.destroy
+        render json: @venue.page_serializer
     end
 
     private

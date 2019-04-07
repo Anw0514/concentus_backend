@@ -1,8 +1,8 @@
 class Venue < ApplicationRecord
   belongs_to :user
-  has_many :page_tidbits, as: :page
+  has_many :page_tidbits, as: :page, dependent: :destroy
   has_many :tidbits, through: :page_tidbits
-  has_many :days
+  has_many :days, dependent: :destroy
   has_many :bookings, through: :days
 
   def genres
