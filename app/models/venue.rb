@@ -4,6 +4,7 @@ class Venue < ApplicationRecord
   has_many :tidbits, through: :page_tidbits
   has_many :days, dependent: :destroy
   has_many :bookings, through: :days
+  has_many_attached :imgs
 
   def genres
     self.tidbits.select do |tidbit|

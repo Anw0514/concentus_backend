@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :recipients, through: :messages, source: :recipient
   has_many :senders, through: :messages, source: :sender
+  has_one_attached :avitar
   has_secure_password
 
   def find_opposite(pages, class_name)

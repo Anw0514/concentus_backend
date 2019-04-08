@@ -3,14 +3,19 @@ class MusiciansController < ApplicationController
     before_action :find_musician, only: [:update, :destroy]
 
     def create
-        @musician = Musician.create(musician_params)
-        render json: @musician.page_serializer
+        @musician = Musician.new(musician_params)
+        @musician.imgs.attach(params[:img])
+        if @musician.save
+            render json: @musician.page_serializer, status: accepted
+        else
+            render json: {errors: @musician.errors.full_messages}, status: unprocessible_entity
+        end
     end
 
     def update
         @musician.update(musician_params)
         if @musician.save
-            render json: @musician, status: accepted
+            render json: @musician.page_serializer, status: accepted
         else
             render json: {errors: @musician.errors.full_messages}, status: unprocessible_entity
         end
@@ -24,7 +29,7 @@ class MusiciansController < ApplicationController
     private
 
     def musician_params
-        params.permit(:name, :zip, :user_id, :bio)
+        params.permit(:name, :zip, :user_id, :bio, :img)
     end
 
     def find_musician

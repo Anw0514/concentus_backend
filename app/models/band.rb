@@ -5,6 +5,7 @@ class Band < ApplicationRecord
   has_many :bookings, as: :act, dependent: :destroy
   has_many :band_members
   has_many :musicians, through: :band_members
+  has_many_attached :imgs
 
   def genres
     self.tidbits.select do |tidbit|

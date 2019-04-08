@@ -6,7 +6,10 @@ class Musician < ApplicationRecord
   has_many :tidbits, through: :page_tidbits
   has_many :bookings, as: :act, dependent: :destroy
   has_many :days, through: :bookings
+  has_many_attached :imgs
 
+
+# gets tidbits of each type for user
   def genres
     self.tidbits.select do |tidbit|
       tidbit.group == 'genre'
@@ -32,6 +35,7 @@ class Musician < ApplicationRecord
   end
 
   def page_serializer
+    # serializer for a musician as a page
     {id: self.id,
      model: "Musician",
      user_id: self.user.id,
@@ -46,6 +50,7 @@ class Musician < ApplicationRecord
   end
 
   def member_serializer
+    # serializer for a musician as a band member
     {
       id: self.id,
       user_id: self.user_id,
@@ -56,6 +61,7 @@ class Musician < ApplicationRecord
   end
 
   def extract_value(tidbit_array)
+    # gets only the value for the tidbits passed in
     tidbit_array.map do |tidbit|
       tidbit.value
     end
