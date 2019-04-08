@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/users/:id/info', to: "users#info"
 
   # custom route for '/login'
-  get '/login', to: "application#login"
+  post '/login', to: "application#login"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
