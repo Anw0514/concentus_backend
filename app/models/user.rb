@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :senders, through: :messages, source: :sender
   has_one_attached :avitar
   has_secure_password
+  validates :email, uniqueness: { case_sensitive: false }
 
   def find_opposite(pages, class_name)
     # method to find the instances of the input class that DON'T belong to self
@@ -45,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def login_serializer
-    # serializer for the response of a user's login
+    # serializer for the response of a user's login or registration
     {id: self.id,
      name: self.name,
      email: self.email,
