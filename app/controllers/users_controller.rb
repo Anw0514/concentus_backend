@@ -15,6 +15,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_email
+    early_bird = User.all.find do |user|
+      user.email == params[:email]
+    end
+    if !!early_bird
+      render json: { error: "There is already a user with that email." }, status: :accepted
+    else
+      render json: { message: "proceed"}, status: :accepted
+    end
+  end
+
   private
 
   def user_params

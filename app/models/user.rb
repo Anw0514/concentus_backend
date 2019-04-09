@@ -39,12 +39,6 @@ class User < ApplicationRecord
     self.combine_page_types(musicians, bands, venues)
   end
 
-  def info_serializer
-    # what actually gets called on for the user's pages and discover pages
-    {my_pages: self.my_pages_serializer,
-     discover_pages: self.discover_pages_serializer}
-  end
-
   def login_serializer
     # serializer for the response of a user's login or registration
     {id: self.id,
@@ -52,7 +46,9 @@ class User < ApplicationRecord
      email: self.email,
      zip: self.zip,
      distance: self.distance,
-     distance_type: self.distance_type
+     distance_type: self.distance_type,
+     my_pages: self.my_pages_serializer,
+     discover_pages: self.discover_pages_serializer
     }
   end
 end
