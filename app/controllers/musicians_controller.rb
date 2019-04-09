@@ -4,7 +4,7 @@ class MusiciansController < ApplicationController
 
     def create
         @musician = Musician.new(musician_params)
-        @musician.imgs.attach(params[:img])
+        # @musician.imgs.attach(params[:img])
         if @musician.save
             render json: @musician.page_serializer, status: accepted
         else
@@ -15,7 +15,7 @@ class MusiciansController < ApplicationController
     def update
         @musician.update(musician_params)
         if @musician.save
-            render json: @musician.page_serializer, status: accepted
+            render json: @musician.page_serializer, status: :accepted
         else
             render json: {errors: @musician.errors.full_messages}, status: unprocessible_entity
         end
@@ -29,7 +29,8 @@ class MusiciansController < ApplicationController
     private
 
     def musician_params
-        params.permit(:name, :zip, :user_id, :bio, :img)
+        params.permit(:name, :zip, :user_id, :bio)
+        # musician params are causing a bug. How do I get :img to be separate from them for the update but still be available to attach the image?
     end
 
     def find_musician
