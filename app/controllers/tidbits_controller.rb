@@ -5,7 +5,7 @@ class TidbitsController < ApplicationController
     end
 
     def index
-
+        render json: Tidbit.index_serializer
     end
 
     private
