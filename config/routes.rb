@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ghost_musicians
   resources :messages, only: [:create, :update]
   resources :bookings, only: [:create, :delete]
   resources :tidbits, only: [:create, :index]

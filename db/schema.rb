@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_070239) do
+ActiveRecord::Schema.define(version: 2019_04_10_154220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,14 @@ ActiveRecord::Schema.define(version: 2019_04_08_070239) do
   end
 
   create_table "band_members", force: :cascade do |t|
-    t.bigint "musician_id"
+    t.string "member_type"
+    t.bigint "member_id"
+    t.string "role"
     t.bigint "band_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_band_members_on_band_id"
-    t.index ["musician_id"], name: "index_band_members_on_musician_id"
+    t.index ["member_type", "member_id"], name: "index_band_members_on_member_type_and_member_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -71,6 +73,12 @@ ActiveRecord::Schema.define(version: 2019_04_08_070239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["venue_id"], name: "index_days_on_venue_id"
+  end
+
+  create_table "ghost_musicians", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -137,7 +145,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_070239) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "band_members", "bands"
-  add_foreign_key "band_members", "musicians"
   add_foreign_key "bands", "users"
   add_foreign_key "bookings", "days"
   add_foreign_key "days", "venues"
