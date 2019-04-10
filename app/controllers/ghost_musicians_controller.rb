@@ -1,0 +1,2 @@
+class GhostMusiciansController < ApplicationController
+end
