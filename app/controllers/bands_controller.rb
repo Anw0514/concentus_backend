@@ -15,7 +15,7 @@ class BandsController < ApplicationController
     def update
         @band.update(band_params)
         if @band.save
-            render json: @band.page_serializer, status: accepted
+            render json: @band.page_serializer, status: :accepted
         else
             render json: {errors: @band.errors.full_messages}, status: unprocessible_entity
         end
@@ -29,7 +29,7 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.permit(:name, :zip, :user_id, :bio, :img)
+        params.permit(:name, :zip, :user_id, :bio)
     end
 
     def find_band

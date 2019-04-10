@@ -10,7 +10,7 @@ class VenuesController < ApplicationController
     def update
         @venue.update(venue_params)
         if @venue.save
-            render json: @venue, status: accepted
+            render json: @venue.page_serializer, status: :accepted
         else
             render json: {errors: @venue.errors.full_messages}, status: unprocessible_entity
         end
@@ -24,7 +24,7 @@ class VenuesController < ApplicationController
     private
 
     def venue_params
-        params.permit(:name, :zip, :user_id, :bio, :img)
+        params.permit(:name, :zip, :user_id, :bio)
     end
 
     def find_venue

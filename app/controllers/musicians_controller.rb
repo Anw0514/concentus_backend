@@ -30,7 +30,7 @@ class MusiciansController < ApplicationController
 
     def musician_params
         params.permit(:name, :zip, :user_id, :bio)
-        # musician params are causing a bug. How do I get :img to be separate from them for the update but still be available to attach the image?
+        # musician params are causing a bug. How do I get :img to be separate from them for the update but still be available to attach the image???
     end
 
     def find_musician
