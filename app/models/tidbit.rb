@@ -9,4 +9,8 @@ class Tidbit < ApplicationRecord
             {group: tid.group, value: tid.value, id: tid.id}
         end
     end
+    
+    def single_serializer
+        {group: self.group, value: self.value, id: self.id}
+    end
 end
