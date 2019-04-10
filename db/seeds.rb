@@ -48,10 +48,10 @@ chine = Musician.create(name: "Chine Anikwe", user: me, zip:56667, bio: "Am I th
 # bands and members
 band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio")
 band2 = Band.create(name: "OctoThots", zip: 90210, user: me, bio: "Lane is actually a dog pretending to be a human.")
-BandMember.create(musician: mesinging, band: band1)
-BandMember.create(musician: ben, band: band1)
-BandMember.create(musician: chine, band: band2)
-BandMember.create(musician: ben, band: band2)
+BandMember.create(member: mesinging, band: band1)
+BandMember.create(member: ben, band: band1)
+BandMember.create(member: chine, band: band2)
+BandMember.create(member: ben, band: band2)
 
 # page tidbits
 PageTidbit.create(tidbit: genre_rock, page: mesinging)

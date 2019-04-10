@@ -1,6 +1,6 @@
 class Musician < ApplicationRecord
   belongs_to :user
-  has_many :band_members, dependent: :destroy
+  has_many :band_members, as: :member, dependent: :destroy
   has_many :bands, through: :band_members
   has_many :page_tidbits, as: :page, dependent: :destroy
   has_many :tidbits, through: :page_tidbits

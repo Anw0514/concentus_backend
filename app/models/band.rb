@@ -4,7 +4,8 @@ class Band < ApplicationRecord
   has_many :tidbits, through: :page_tidbits
   has_many :bookings, as: :act, dependent: :destroy
   has_many :band_members
-  has_many :musicians, through: :band_members
+  has_many :musicians, through: :band_members, source: :member, source_type: "Musician"
+  has_many :ghost_musicians, through: :band_members, source: :member, source_type: "Ghost_Musician"
   has_many_attached :imgs
 
   def genres
