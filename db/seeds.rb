@@ -18,24 +18,42 @@ Band.destroy_all
 User.destroy_all
 
 # users
-me = User.create(name: "andrea123", email: "anw0514@gmail.com", zip: 20886, distance: 10, distance_type: "mi", password: "password123")
-chris = User.create(name: "dcJones", email: "djones", zip: 20010, distance: 50, distance_type: 'km', password: "password123")
+me = User.create(name: "Andrea Williams", email: "a@a.com", zip: 20886, distance: 10, distance_type: "mi", password: "123e")
+chris = User.create(name: "Chris Jones", email: "dcjones@aol.com", zip: 20010, distance: 50, distance_type: 'km', password: "123e")
+shan = User.create(name: "Shannon Nabors", email: "shan@aol.com", zip: 20011, distance: 60, distance_type: 'mi', password: "123e")
+hai = User.create(name: "Hai Nguyen", email: "hihai@hey.com", zip: 20012, distance: 30, distance_type: 'km', password: "123e")
 
 # tidbits
 genre_rock = Tidbit.create(group: 'genre', value: 'Rock')
+genre_indie = Tidbit.create(group: 'genre', value: 'Indie')
+genre_funk = Tidbit.create(group: 'genre', value: 'Funk')
+genre_pop = Tidbit.create(group: 'genre', value: 'Pop')
+genre_rnb = Tidbit.create(group: 'genre', value: 'RnB')
+genre_rap = Tidbit.create(group: 'genre', value: 'Rap')
+genre_latin = Tidbit.create(group: 'genre', value: 'Latin')
 genre_classical = Tidbit.create(group: 'genre', value: 'Classical')
 
 skill_piano = Tidbit.create(group: 'skill', value: 'Piano')
 skill_sing = Tidbit.create(group: 'skill', value: 'Singing')
 skill_gd = Tidbit.create(group: 'skill', value: 'Graphic Design')
 skill_bass = Tidbit.create(group: 'skill', value: 'Bass Guitar')
+skill_guitar = Tidbit.create(group: 'skill', value: 'Guitar')
+skill_drums = Tidbit.create(group: 'skill', value: 'Drums')
+skill_saxophone = Tidbit.create(group: 'skill', value: 'Saxophone')
+skill_trumpet = Tidbit.create(group: 'skill', value: 'Trumpet')
+skill_violin = Tidbit.create(group: 'skill', value: 'Violin')
+
 
 looking_bands = Tidbit.create(group: 'looking for', value: 'Band')
 looking_venues = Tidbit.create(group: 'looking for', value: 'Venue')
 looking_pianists = Tidbit.create(group: 'looking for', value: 'Pianist')
+looking_guitarists = Tidbit.create(group: 'looking for', value: 'Guitarist')
+looking_bassists = Tidbit.create(group: 'looking for', value: 'Bassist')
+looking_drummers = Tidbit.create(group: 'looking for', value: 'Drummer')
 
 link_google = Tidbit.create(group: 'link', value: 'google.com')
 link_learn = Tidbit.create(group: 'link', value: 'learn.co')
+# ??? should link be separated into its own table? It needs a display name so that long lists arent displayed.
 
 # venues
 venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'Real Cafe', user: me, bio: "This is another bio that's reallt long to test if the string data type can handle it. I have been working really hard on planning and I'm finally coding which is weird but good. I hope that everything goes smoothly, but I'm not that optimistic that it will.'")

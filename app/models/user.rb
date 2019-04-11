@@ -53,4 +53,4 @@ class User < ApplicationRecord
   end
 end
 
-# !!! for musicians, bands, and venues: look into subclasses / modules so that the extract_values method isn't repeated
+# !!! for musicians, bands, and venues: extract their methods into application so that its drier
