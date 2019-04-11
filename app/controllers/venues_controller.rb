@@ -4,6 +4,7 @@ class VenuesController < ApplicationController
 
     def create
         @venue = Venue.create(venue_params)
+        @venue.create_page_tidbits(params[:tidbits])
         render json: @venue.page_serializer
     end
 
@@ -24,7 +25,7 @@ class VenuesController < ApplicationController
     private
 
     def venue_params
-        params.permit(:name, :zip, :user_id, :bio, :links, :address, :genres, :lookings)
+        params.permit(:name, :zip, :user_id, :bio, :address)
     end
 
     def find_venue

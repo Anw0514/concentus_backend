@@ -72,7 +72,6 @@ class Musician < ApplicationRecord
     tidbits.each do |tb|
       PageTidbit.create(tidbit_id: tb, page: self)
     end
-    byebug
   end
 
 end
