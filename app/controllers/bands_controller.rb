@@ -4,7 +4,6 @@ class BandsController < ApplicationController
 
     def create
         @band = Band.new(band_params)
-        @band.img.attach(params[:img])
         if @band.save
             render json: @band.page_serializer, status: accepted
         else
@@ -29,7 +28,7 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.permit(:name, :zip, :user_id, :bio)
+        params.permit(:name, :zip, :user_id, :bio, :links, :genres, :lookings)
     end
 
     def find_band

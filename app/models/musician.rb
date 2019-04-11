@@ -67,4 +67,12 @@ class Musician < ApplicationRecord
     end
   end
 
+  def create_page_tidbits(tidbits)
+    # creates tidbit_pages upopn creation or update of a musician
+    tidbits.each do |tb|
+      PageTidbit.create(tidbit_id: tb, page: self)
+    end
+    byebug
+  end
+
 end
