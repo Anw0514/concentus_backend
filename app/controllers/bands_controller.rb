@@ -14,6 +14,7 @@ class BandsController < ApplicationController
 
     def update
         @band.update(band_params)
+        @venue.create_page_tidbits(params[:tidbits])
         if @band.save
             render json: @band.page_serializer, status: :accepted
         else

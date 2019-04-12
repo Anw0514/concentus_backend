@@ -10,6 +10,7 @@ class VenuesController < ApplicationController
 
     def update
         @venue.update(venue_params)
+        @venue.create_page_tidbits(params[:tidbits])
         if @venue.save
             render json: @venue.page_serializer, status: :accepted
         else
