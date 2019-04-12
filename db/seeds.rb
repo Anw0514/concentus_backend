@@ -53,15 +53,17 @@ looking_drummers = Tidbit.create(group: 'looking for', value: 'Drummer')
 
 link_google = Tidbit.create(group: 'link', value: 'google.com')
 link_learn = Tidbit.create(group: 'link', value: 'learn.co')
-# ??? should link be separated into its own table? It needs a display name so that long lists arent displayed.
+# ??? should link be separated into its own table? It needs a display name so that long links arent displayed.
 
 # venues
-venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'Real Cafe', user: me, bio: "This is another bio that's reallt long to test if the string data type can handle it. I have been working really hard on planning and I'm finally coding which is weird but good. I hope that everything goes smoothly, but I'm not that optimistic that it will.'")
+venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'Real Cafe', user: me, bio: "This cafe is super cool! We've got a small stage that we would love to fill for fridays and saturdays. We are definitely real so please shoot us a message if you're interested for a really cool and really real gig!")
+venue2 = Venue.create(address: '6750 Rainbow rd. Mushroom Kingdom, MD', zip: 20888, name: 'Mario Kafe', user: me, bio: "We need super talented bros to write a song about our featured menue item, the peach castobler (a peach cobler sculpture of a castle. We want to be able to play it whenever anyone orders this delicious item. If you'd like to help, let us know!")
 
 # musicians
 mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, bio: "This is a bio")
 ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, bio: "Why is that so fire??")
-chine = Musician.create(name: "Chine Anikwe", user: me, zip:56667, bio: "Am I the voice of reason or am I just rigid and uptight??")
+chine = Musician.create(name: "Chine Anikwe", user: me, zip: 56667, bio: "I am the voice of reason.")
+
 
 # bands and members
 band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio")
@@ -95,4 +97,3 @@ PageTidbit.create(tidbit: genre_classical, page: band2)
 
 PageTidbit.create(tidbit: skill_bass, page: chine)
 PageTidbit.create(tidbit: looking_venues, page: chine)
-
