@@ -1,4 +1,5 @@
 class Musician < ApplicationRecord
+  # !!! create module for pages because of the repeated methods
   belongs_to :user
   has_many :band_members, as: :member, dependent: :destroy
   has_many :bands, through: :band_members
@@ -63,7 +64,7 @@ class Musician < ApplicationRecord
   def extract_value(tidbit_array)
     # gets only the value for the tidbits passed in
     tidbit_array.map do |tidbit|
-      tidbit.value
+      {value: tidbit.value, id: tidbit.id}
     end
   end
 

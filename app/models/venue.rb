@@ -41,7 +41,7 @@ class Venue < ApplicationRecord
 
   def extract_value(tidbit_array)
     tidbit_array.map do |tidbit|
-      tidbit.value
+      {value: tidbit.value, id: tidbit.id}
     end
   end
 
