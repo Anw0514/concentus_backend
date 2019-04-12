@@ -47,6 +47,7 @@ class Venue < ApplicationRecord
 
   def create_page_tidbits(tidbits)
     # creates tidbit_pages upopn creation or update of a venue
+    self.page_tidbits.destroy_all
     tidbits.each do |tb|
       PageTidbit.create(tidbit_id: tb, page: self)
     end
