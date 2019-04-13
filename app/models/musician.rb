@@ -54,10 +54,8 @@ class Musician < ApplicationRecord
     # serializer for a musician as a band member
     {
       id: self.id,
-      user_id: self.user_id,
       name: self.name,
-      zip: self.zip,
-      bio: self.bio
+      type: 'Musician'
     }
   end
 
