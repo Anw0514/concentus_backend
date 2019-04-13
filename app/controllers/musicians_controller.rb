@@ -15,6 +15,10 @@ class MusiciansController < ApplicationController
         end
     end
 
+    def index
+        render json: Musician.all.map { |m| m.member_serializer }
+    end
+
     def update
         @musician.update(musician_params)
         @musician.create_page_tidbits(params[:tidbits])
