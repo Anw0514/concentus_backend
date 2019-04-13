@@ -35,11 +35,9 @@ genre_classical = Tidbit.create(group: 'genre', value: 'Classical')
 
 skill_piano = Tidbit.create(group: 'skill', value: 'Piano')
 skill_sing = Tidbit.create(group: 'skill', value: 'Singing')
-skill_gd = Tidbit.create(group: 'skill', value: 'Graphic Design')
 skill_bass = Tidbit.create(group: 'skill', value: 'Bass Guitar')
 skill_guitar = Tidbit.create(group: 'skill', value: 'Guitar')
 skill_drums = Tidbit.create(group: 'skill', value: 'Drums')
-skill_saxophone = Tidbit.create(group: 'skill', value: 'Saxophone')
 skill_trumpet = Tidbit.create(group: 'skill', value: 'Trumpet')
 skill_violin = Tidbit.create(group: 'skill', value: 'Violin')
 
@@ -60,31 +58,45 @@ venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'R
 venue2 = Venue.create(address: '6750 Rainbow rd. Mushroom Kingdom, MD', zip: 20888, name: 'Mario Kafe', user: me, bio: "We need super talented bros to write a song about our featured menue item, the peach castobler (a peach cobler sculpture of a castle. We want to be able to play it whenever anyone orders this delicious item. If you'd like to help, let us know!")
 
 # musicians
-mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, bio: "This is a bio")
+mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, bio: "I feel like I should be way farther along with my progject than I am right now but I'll just do a shit ton of work over the weekend.")
 ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, bio: "Why is that so fire??")
 chine = Musician.create(name: "Chine Anikwe", user: me, zip: 56667, bio: "I am the voice of reason.")
+heloise = Musician.create(name: "Heloise Taillet", user: shan, zip: 56697, bio: "Anthony's more legit than I am.")
+anthony = Musician.create(name: "The Bully", user: hai, zip: 56667, bio: "It's pronounced kid kuh-dee... Not kid cootie")
+
+
 
 
 # bands and members
 band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio")
-band2 = Band.create(name: "OctoThots", zip: 90210, user: me, bio: "Lane is actually a dog pretending to be a human.")
-BandMember.create(member: mesinging, band: band1)
-BandMember.create(member: ben, band: band1)
-BandMember.create(member: chine, band: band2)
-BandMember.create(member: ben, band: band2)
+band2 = Band.create(name: "OctoThots", zip: 90210, user: hai, bio: "Lane is actually a dog pretending to be a human.")
+BandMember.create(member: mesinging, band: band1, role: 'Vocals')
+BandMember.create(member: ben, band: band1, role: 'Piano')
+BandMember.create(member: ben, band: band2, role: 'Piano')
+BandMember.create(member: heloise, band: band2, role: 'Guitar')
+BandMember.create(member: anthony, band: band2, role: 'Trumpet')
+BandMember.create(member: mesinging, band: band2, role: 'Vocals')
+BandMember.create(member: chine, band: band2, role: 'Bass Guitar')
 
 # page tidbits
-PageTidbit.create(tidbit: genre_rock, page: mesinging)
+PageTidbit.create(tidbit: genre_indie, page: mesinging)
 PageTidbit.create(tidbit: link_google, page: mesinging)
 PageTidbit.create(tidbit: skill_sing, page: mesinging)
-PageTidbit.create(tidbit: skill_gd, page: mesinging)
 PageTidbit.create(tidbit: skill_piano, page: mesinging)
+PageTidbit.create(tidbit: looking_venues, page: mesinging)
 
 PageTidbit.create(tidbit: link_google, page: band1)
 PageTidbit.create(tidbit: looking_pianists, page: band1)
+PageTidbit.create(tidbit: looking_guitarists, page: band1)
+PageTidbit.create(tidbit: looking_bassists, page: band1)
 
 PageTidbit.create(tidbit: looking_bands, page: venue1)
 PageTidbit.create(tidbit: link_learn, page: venue1)
+PageTidbit.create(tidbit: genre_latin, page: venue1)
+PageTidbit.create(tidbit: genre_pop, page: venue1)
+
+PageTidbit.create(tidbit: looking_bands, page: venue2)
+PageTidbit.create(tidbit: link_learn, page: venue2)
 
 PageTidbit.create(tidbit: genre_classical, page: ben)
 PageTidbit.create(tidbit: skill_piano, page: ben)
@@ -93,7 +105,22 @@ PageTidbit.create(tidbit: looking_bands, page: ben)
 PageTidbit.create(tidbit: looking_venues, page: ben)
 
 PageTidbit.create(tidbit: looking_venues, page: band2)
-PageTidbit.create(tidbit: genre_classical, page: band2)
+PageTidbit.create(tidbit: looking_drummers, page: band2)
+PageTidbit.create(tidbit: genre_rock, page: band2)
+PageTidbit.create(tidbit: genre_rnb, page: venue1)
+PageTidbit.create(tidbit: genre_rap, page: venue1)
 
 PageTidbit.create(tidbit: skill_bass, page: chine)
 PageTidbit.create(tidbit: looking_venues, page: chine)
+
+PageTidbit.create(tidbit: genre_funk, page: heloise)
+PageTidbit.create(tidbit: skill_violin, page: heloise)
+PageTidbit.create(tidbit: skill_guitar, page: heloise)
+PageTidbit.create(tidbit: looking_venues, page: heloise)
+
+PageTidbit.create(tidbit: skill_trumpet, page: anthony)
+PageTidbit.create(tidbit: looking_venues, page: anthony)
+PageTidbit.create(tidbit: skill_drums, page: anthony)
+
+
+

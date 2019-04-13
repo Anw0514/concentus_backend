@@ -37,7 +37,7 @@ class Band < ApplicationRecord
      looking_for: self.extract_value(self.looking_for),
      links: self.extract_value(self.links),
      bookings: self.bookings,
-     members: self.musicians.map { |musician| musician.member_serializer}}
+     members: self.band_members.map { |musician| musician.member_serializer}}
   end
 
   def extract_value(tidbit_array)
