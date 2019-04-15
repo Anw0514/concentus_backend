@@ -32,7 +32,7 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.require(:bc).permit(:name, :zip, :user_id, :bio)
+        params.require(:bc).permit(:name, :zip, :user_id, :bio, :yt_video)
     end
 
     def member_params

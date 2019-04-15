@@ -7,7 +7,6 @@ class Musician < ApplicationRecord
   has_many :tidbits, through: :page_tidbits
   has_many :bookings, as: :act, dependent: :destroy
   has_many :days, through: :bookings
-  has_many_attached :imgs
 
 
 # gets tidbits of each type for user
@@ -43,6 +42,7 @@ class Musician < ApplicationRecord
      name: self.name,
      zip: self.zip,
      bio: self.bio,
+     yt: self.yt_video,
      genres: self.extract_value(self.genres),
      looking_for: self.extract_value(self.looking_for),
      links: self.extract_value(self.links),

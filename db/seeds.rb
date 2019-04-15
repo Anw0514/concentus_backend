@@ -58,18 +58,18 @@ venue1 = Venue.create(address: '123 fake st. RealTown, MD', zip: 20876, name: 'R
 venue2 = Venue.create(address: '6750 Rainbow rd. Mushroom Kingdom, MD', zip: 20888, name: 'Mario Kafe', user: me, bio: "We need super talented bros to write a song about our featured menue item, the peach castobler (a peach cobler sculpture of a castle. We want to be able to play it whenever anyone orders this delicious item. If you'd like to help, let us know!")
 
 # musicians
-mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, bio: "I feel like I should be way farther along with my progject than I am right now but I'll just do a shit ton of work over the weekend.")
-ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, bio: "Why is that so fire??")
-chine = Musician.create(name: "Chine Anikwe", user: me, zip: 56667, bio: "I am the voice of reason.")
-heloise = Musician.create(name: "Heloise Taillet", user: shan, zip: 56697, bio: "Anthony's more legit than I am.")
-anthony = Musician.create(name: "The Bully", user: hai, zip: 56667, bio: "It's pronounced kid kuh-dee... Not kid cootie")
+mesinging = Musician.create(name: "Andrea Williams", user: me, zip: 20874, yt_video: 'https://www.youtube.com/embed/LfaU-KEkBt8', bio: "I feel like I should be way farther along with my progject than I am right now but I'll just do a shit ton of work over the weekend.")
+ben = Musician.create(name: "Benjamin Addai", user: chris, zip: 20021, yt_video: 'https://www.youtube.com/embed/4VR-6AS0-l4', bio: "Why is that so fire??")
+chine = Musician.create(name: "Chine Anikwe", user: me, zip: 56667, yt_video: 'https://www.youtube.com/embed/FAuPgMPBEOk', bio: "I am the voice of reason.")
+heloise = Musician.create(name: "Heloise Taillet", user: shan, zip: 56697, yt_video: 'https://www.youtube.com/embed/da-cHvWGhr0', bio: "Anthony's more legit than I am.")
+anthony = Musician.create(name: "The Bully", user: hai, zip: 56667, yt_video: 'https://www.youtube.com/embed/Fj55FyfVa0o', bio: "It's pronounced kid kuh-dee... Not kid cootie")
 
 
 
 
 # bands and members
-band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio")
-band2 = Band.create(name: "OctoThots", zip: 90210, user: hai, bio: "Lane is actually a dog pretending to be a human.")
+band1 = Band.create(name: "Binding.cry", zip: 20005, user: me, bio: "This is another bio", yt_video: 'https://www.youtube.com/embed/I6NSS-CC93o')
+band2 = Band.create(name: "JSON Derulo Fan Club", zip: 90210, yt_video: 'https://www.youtube.com/embed/pBI3lc18k8Q', user: hai, bio: "We are json de-realest people out there. We need a drummer who's able to keep up, though.")
 BandMember.create(member: mesinging, band: band1, role: 'Vocals')
 BandMember.create(member: ben, band: band1, role: 'Piano')
 BandMember.create(member: ben, band: band2, role: 'Piano')

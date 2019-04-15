@@ -6,7 +6,6 @@ class Band < ApplicationRecord
   has_many :band_members
   has_many :musicians, through: :band_members, source: :member, source_type: "Musician"
   has_many :ghost_musicians, through: :band_members, source: :member, source_type: "Ghost_Musician"
-  has_many_attached :imgs
 
   def genres
     self.tidbits.select do |tidbit|
@@ -33,6 +32,7 @@ class Band < ApplicationRecord
      name: self.name,
      zip: self.zip,
      bio: self.bio,
+     yt: self.yt_video,
      genres: self.extract_value(self.genres),
      looking_for: self.extract_value(self.looking_for),
      links: self.extract_value(self.links),

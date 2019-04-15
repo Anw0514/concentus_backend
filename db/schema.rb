@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_154220) do
     t.integer "zip"
     t.string "name"
     t.string "bio"
+    t.string "yt_video"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_154220) do
   create_table "musicians", force: :cascade do |t|
     t.string "name"
     t.string "bio"
+    t.string "yt_video"
     t.bigint "user_id"
     t.integer "zip"
     t.datetime "created_at", null: false
