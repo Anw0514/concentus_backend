@@ -8,7 +8,7 @@ class GhostMusician < ApplicationRecord
         {
         id: self.id,
         name: self.name,
-        type: 'Ghost'
+        type: 'GhostMusician'
         }
     end
 end

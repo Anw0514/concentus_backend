@@ -47,10 +47,18 @@ class Band < ApplicationRecord
   end
 
   def create_page_tidbits(tidbits)
-    # creates tidbit_pages upopn creation or update of a band
+    # creates page tidbits upopn creation or update of a band
     self.page_tidbits.destroy_all
     tidbits.each do |tb|
       PageTidbit.create(tidbit_id: tb, page: self)
+    end
+  end
+
+  def add_band_members(members)
+    # creates band members upopn creation or update of a band
+    self.band_members.destroy_all
+    members.each do |mem|
+      BandMember.create(band: self, member_id: mem[:id], role: mem[:role], member_type: mem[:type])
     end
   end
 
