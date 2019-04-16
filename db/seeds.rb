@@ -6,16 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Booking.destroy_all
-Message.destroy_all
-BandMember.destroy_all
-PageTidbit.destroy_all
-Day.destroy_all
-Venue.destroy_all
-Musician.destroy_all
-Tidbit.destroy_all
-Band.destroy_all
-User.destroy_all
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
 
 # users
 me = User.create(name: "Andrea Williams", email: "a@a.com", zip: 20886, distance: 10, distance_type: "mi", password: "123e")
@@ -122,5 +116,7 @@ PageTidbit.create(tidbit: skill_trumpet, page: anthony)
 PageTidbit.create(tidbit: looking_venues, page: anthony)
 PageTidbit.create(tidbit: skill_drums, page: anthony)
 
-
-
+Message.create(sender: me, recipient: hai, content: 'I am better than you at table tennis.', subject: 'Truth')
+Message.create(sender: chris, recipient: me, content: 'Are you working on the messages???', subject: 'Fix Yourself')
+Message.create(sender: hai, recipient: shan, content: 'Do you want to die', subject: 'DYWTD')
+Message.create(sender: shan, recipient: hai, content: "You don't need to kill in order to win the game", subject: 'I do not want to die.')

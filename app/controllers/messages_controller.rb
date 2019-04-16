@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     end
 
     def update
-
+        
     end
 
     private
