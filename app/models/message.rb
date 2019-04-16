@@ -8,7 +8,9 @@ class Message < ApplicationRecord
       recipient_id: self.recipient.id,
       subject: self.subject,
       content: self.content,
-      date: self.created_at
+      date: self.created_at,
+      s_del: self.sender_deleted,
+      r_del: self.recipient_deleted
     }
   end
 end
