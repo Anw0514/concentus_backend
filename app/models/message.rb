@@ -9,7 +9,7 @@ class Message < ApplicationRecord
       recipient_id: self.recipient.id,
       subject: self.subject,
       content: self.content,
-      date: self.created_at,
+      created_at: self.created_at,
       s_del: self.sender_deleted,
       r_del: self.recipient_deleted
     }
@@ -24,7 +24,10 @@ class Message < ApplicationRecord
         msgs[msg.sender.name] = [msg.message_serializer]
       end
     end
-    msgs
+
+    msgs.each do |person, msg|
+      (msg.sort_by {|obj| obj[:created_at] })
+    end
   end
 
   def self.multi_serializer_as_sender(messages)
@@ -36,6 +39,8 @@ class Message < ApplicationRecord
         msgs[msg.recipient.name] = [msg.message_serializer]
       end
     end
-    msgs
+    msgs.each do |person, msg|
+      (msg.sort_by {|obj| obj[:created_at] })
+    end
   end
 end

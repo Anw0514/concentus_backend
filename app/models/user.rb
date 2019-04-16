@@ -48,12 +48,12 @@ class User < ApplicationRecord
 
   def login_serializer
     # serializer for the response of a user's login or registration
-    {id: self.id,
-     name: self.name,
-     email: self.email,
-     zip: self.zip,
-     distance: self.distance,
-     distance_type: self.distance_type,
+    {user: {id: self.id,
+            name: self.name,
+            email: self.email,
+            zip: self.zip,
+            distance: self.distance,
+            distance_type: self.distance_type},
      my_pages: self.my_pages_serializer,
      discover_pages: self.discover_pages_serializer,
      messages: self.messages
