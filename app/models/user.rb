@@ -2,12 +2,19 @@ class User < ApplicationRecord
   has_many :bands
   has_many :musicians
   has_many :venues
-  has_many :messages
+  has_many :messages_sent, class_name: :Message, foreign_key: :sender_id
+  has_many :messages_received, class_name: :Message, foreign_key: :recipient_id
   has_many :recipients, through: :messages, source: :recipient
   has_many :senders, through: :messages, source: :sender
   has_one_attached :avitar
   has_secure_password
   validates :email, uniqueness: { case_sensitive: false }
+
+  def messages
+    a = Message.multi_serializer_as_sender(self.messages_sent)
+    b = Message.multi_serializer_as_receiver(self.messages_received)
+    a.merge!(b) { |k, o, n| o + n }
+  end
 
   def find_opposite(pages, class_name)
     # method to find the instances of the input class that DON'T belong to self
@@ -48,7 +55,8 @@ class User < ApplicationRecord
      distance: self.distance,
      distance_type: self.distance_type,
      my_pages: self.my_pages_serializer,
-     discover_pages: self.discover_pages_serializer
+     discover_pages: self.discover_pages_serializer,
+     messages: self.messages
     }
   end
 end
