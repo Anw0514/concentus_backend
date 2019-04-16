@@ -4,16 +4,41 @@ class User < ApplicationRecord
   has_many :venues
   has_many :messages_sent, class_name: :Message, foreign_key: :sender_id
   has_many :messages_received, class_name: :Message, foreign_key: :recipient_id
-  has_many :recipients, through: :messages, source: :recipient
-  has_many :senders, through: :messages, source: :sender
+  has_many :recipients, through: :messages_sent, source: :recipient
+  has_many :senders, through: :messages_received, source: :sender
   has_one_attached :avitar
   has_secure_password
   validates :email, uniqueness: { case_sensitive: false }
 
-  def messages
-    a = Message.multi_serializer_as_sender(self.messages_sent)
-    b = Message.multi_serializer_as_receiver(self.messages_received)
-    a.merge!(b) { |k, o, n| o + n }
+  def interlocutors
+    (self.senders + self.recipients).uniq
+  end
+
+  def make_conversation(interlocutor)
+    a = self.messages_sent.select do |msg|
+      msg.recipient == interlocutor
+    end.map do |msg|
+      msg.message_serializer(true)
+    end
+
+    b = self.messages_received.select do |msg|
+      msg.sender == interlocutor
+    end.map do |msg|
+      msg.message_serializer(false)
+    end
+
+    a.concat(b).uniq.sort_by { |msg| msg[:created_at] }.reverse
+  end
+
+  def conversations_serializer
+    self.interlocutors.map do |i|
+      { name: i.name,
+        id: i.id,
+        email: i.email,
+        img: 'https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg',
+        messages: self.make_conversation(i)
+      }
+    end
   end
 
   def find_opposite(pages, class_name)
@@ -56,7 +81,7 @@ class User < ApplicationRecord
             distance_type: self.distance_type},
      my_pages: self.my_pages_serializer,
      discover_pages: self.discover_pages_serializer,
-     messages: self.messages
+     conversations: self.conversations_serializer
     }
   end
 end
