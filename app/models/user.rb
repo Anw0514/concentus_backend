@@ -6,7 +6,6 @@ class User < ApplicationRecord
   has_many :messages_received, class_name: :Message, foreign_key: :recipient_id
   has_many :recipients, through: :messages_sent, source: :recipient
   has_many :senders, through: :messages_received, source: :sender
-  has_one_attached :avitar
   has_secure_password
   validates :email, uniqueness: { case_sensitive: false }
 
