@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
     
     def create
         @message = Message.create(message_params)
+        render json: @message.message_serializer(true)
     end
 
     def update
