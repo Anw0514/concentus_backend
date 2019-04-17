@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:info]
+  before_action :find_user, only: [:show]
 
-  def index
-    render json: User.index_serializer
+  def show
+    render json: @user.msg_serializer
   end
 
   def create

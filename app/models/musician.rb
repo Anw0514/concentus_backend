@@ -38,7 +38,7 @@ class Musician < ApplicationRecord
     # serializer for a musician as a page
     {id: self.id,
      model: "Musician",
-     user_id: self.user.id,
+     user: self.user.msg_serializer,
      name: self.name,
      zip: self.zip,
      bio: self.bio,

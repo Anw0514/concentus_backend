@@ -40,13 +40,11 @@ class User < ApplicationRecord
     end
   end
 
-  def self.index_serializer
-    self.all.map do |user|
-      {name: user.name,
-       id: user.id,
-       email: user.email,
-       avatar: user.avatar}
-    end
+  def msg_serializer
+    {name: self.name,
+      id: self.id,
+      email: self.email,
+      avatar: self.avatar}
   end
 
   def find_opposite(pages, class_name)

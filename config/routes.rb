@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :update]
   resources :bookings, only: [:create, :delete]
   resources :tidbits, only: [:create, :index]
-  resources :users, only: [:index, :create, :update, :destroy]
+  resources :users, only: [:show, :create, :update, :destroy]
   resources :ghost_musicians, only: [:create]
   resources :musicians, only: [:index, :create, :destroy, :update]
   resources :bands, only: [:create, :destroy, :update]
