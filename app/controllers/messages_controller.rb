@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     private
 
     def message_params
-        params.require(:m).permit(:sender_id, :recipient_id, :sender_deleted, :recipient_deleted, :content, :subject)
+        params.permit(:sender_id, :recipient_id, :sender_deleted, :recipient_deleted, :content, :subject)
     end
 
     def find_message
