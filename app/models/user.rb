@@ -34,7 +34,7 @@ class User < ApplicationRecord
       { name: i.name,
         id: i.id,
         email: i.email,
-        avatar: 'https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg',
+        avatar: i.avatar,
         messages: self.make_conversation(i)
       }
     end
