@@ -4,13 +4,13 @@ class VenuesController < ApplicationController
 
     def create
         @venue = Venue.create(venue_params)
-        @venue.create_page_tidbits(params[:tidbits])
+        @venue.create_page_tidbits(tidbit_params)
         render json: @venue.page_serializer
     end
 
     def update
         @venue.update(venue_params)
-        @venue.create_page_tidbits(params[:tidbits])
+        @venue.create_page_tidbits(tidbit_params)
         if @venue.save
             render json: @venue.page_serializer, status: :accepted
         else
@@ -27,6 +27,10 @@ class VenuesController < ApplicationController
 
     def venue_params
         params.require(:bc).permit(:name, :zip, :user_id, :bio, :address)
+    end
+
+    def tidbit_params
+        params.require(:bc).permit(tidbits:[])
     end
 
     def find_venue

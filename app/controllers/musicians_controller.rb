@@ -4,7 +4,7 @@ class MusiciansController < ApplicationController
 
     def create
         @musician = Musician.create(musician_params)
-        @musician.create_page_tidbits(params[:tidbits])
+        @musician.create_page_tidbits(tidbit_params)
         if @musician.save
             render json: @musician.page_serializer, status: :accepted
         else
@@ -18,7 +18,7 @@ class MusiciansController < ApplicationController
 
     def update
         @musician.update(musician_params)
-        @musician.create_page_tidbits(params[:tidbits])
+        @musician.create_page_tidbits(tidbit_params)
         if @musician.save
             render json: @musician.page_serializer, status: :accepted
         else
@@ -35,6 +35,10 @@ class MusiciansController < ApplicationController
 
     def musician_params
         params.require(:bc).permit(:name, :zip, :user_id, :bio, :yt_video)
+    end
+
+    def tidbit_params
+        params.require(:bc).permit(tidbits:[])
     end
 
     def find_musician
