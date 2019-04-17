@@ -83,6 +83,7 @@ class User < ApplicationRecord
             name: self.name,
             email: self.email,
             zip: self.zip,
+            avatar: self.avatar,
             distance: self.distance,
             distance_type: self.distance_type},
      my_pages: self.my_pages_serializer,
