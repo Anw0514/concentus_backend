@@ -4,7 +4,7 @@ class MusiciansController < ApplicationController
 
     def create
         @musician = Musician.create(musician_params)
-        @musician.create_page_tidbits(tidbit_params)
+        @musician.create_page_tidbits(tidbit_params[:tidbits])
         if @musician.save
             render json: @musician.page_serializer, status: :accepted
         else
@@ -18,7 +18,7 @@ class MusiciansController < ApplicationController
 
     def update
         @musician.update(musician_params)
-        @musician.create_page_tidbits(tidbit_params)
+        @musician.create_page_tidbits(tidbit_params[:tidbits])
         if @musician.save
             render json: @musician.page_serializer, status: :accepted
         else

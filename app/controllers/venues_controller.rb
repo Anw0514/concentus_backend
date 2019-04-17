@@ -4,13 +4,13 @@ class VenuesController < ApplicationController
 
     def create
         @venue = Venue.create(venue_params)
-        @venue.create_page_tidbits(tidbit_params)
+        @venue.create_page_tidbits(tidbit_params[:tidbits])
         render json: @venue.page_serializer
     end
 
     def update
         @venue.update(venue_params)
-        @venue.create_page_tidbits(tidbit_params)
+        @venue.create_page_tidbits(tidbit_params[:tidbits])
         if @venue.save
             render json: @venue.page_serializer, status: :accepted
         else
