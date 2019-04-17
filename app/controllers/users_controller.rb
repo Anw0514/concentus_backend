@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   before_action :find_user, only: [:info]
 
-  def info
-    render json: @user.info_serializer
+  def index
+    render json: User.index_serializer
   end
 
   def create

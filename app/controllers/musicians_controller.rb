@@ -4,9 +4,6 @@ class MusiciansController < ApplicationController
 
     def create
         @musician = Musician.create(musician_params)
-        # byebug
-        # @musician.imgs.attach(params[:imgs])
-        # byebug
         @musician.create_page_tidbits(params[:tidbits])
         if @musician.save
             render json: @musician.page_serializer, status: :accepted
