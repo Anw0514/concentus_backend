@@ -91,6 +91,17 @@ class User < ApplicationRecord
      conversations: self.conversations_serializer
     }
   end
+
+  def update_serializer
+    {id: self.id,
+    name: self.name,
+    email: self.email,
+    zip: self.zip,
+    avatar: self.avatar,
+    distance: self.distance,
+    distance_type: self.distance_type}
+  end
+
 end
 
 # !!! for musicians, bands, and venues: extract their methods into application so that its drier
