@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if @user.save?
+    if @user.save
       render json: @user.login_serializer, status: :created
     else
       render json: { errors: @user.errors.full_messages }, status: :not_acceptable
