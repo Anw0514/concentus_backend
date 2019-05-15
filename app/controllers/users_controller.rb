@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :update]
 
   def show
     render json: @user.msg_serializer
@@ -9,6 +9,15 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
+      render json: @user.login_serializer, status: :created
+    else
+      render json: { errors: @user.errors.full_messages }, status: :not_acceptable
+    end
+  end
+
+  def update
+    @user.update(user_params)
+    if @user.save?
       render json: @user.login_serializer, status: :created
     else
       render json: { errors: @user.errors.full_messages }, status: :not_acceptable
